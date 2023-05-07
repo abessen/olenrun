@@ -100,7 +100,11 @@ value_limit = st.sidebar.number_input("Value Limit", min_value=0, max_value=4000
 
 
 def update_data(value_slider, y_axis_limit):
-   
+    global df 
+    # Check if file is busy or not available
+    while os.path.exists(wb_file_path) and not os.path.isfile(wb_file_path):
+        print("File is busy, waiting and retrying...")
+        time.sleep(30)
 
     # Load the data
     df = load_data(wb_file_path, rolling_window)
@@ -129,12 +133,7 @@ def update_data(value_slider, y_axis_limit):
 
 
 
-def lighten_color_fixed(color, amount=100):
-    r, g, b = color
-    r = max(min(r + amount, 255), 0)
-    g = max(min(g + amount, 255), 0)
-    b = max(min(b + amount, 255), 0)
-    return int(r), int(g), int(b)
+
 
 
 
