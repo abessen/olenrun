@@ -19,7 +19,7 @@ new_file_name = current_date_str + file_extension
 wb_file_path = os.path.join(os.path.dirname(file_path), new_file_name)
 
 # Set the local file path (within your Git repository)
-local_file_path = "c:\\olenrun\\" + current_date_str + file_extension
+local_file_path = "c:\\olenrun\\NowData.xlsx"
 
 # Copy the file to the local GitHub repository
 shutil.copy(wb_file_path, local_file_path)
