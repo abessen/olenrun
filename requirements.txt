@@ -1,0 +1,7 @@
+altair==4.2.0
+pandas==1.4.6
+plotly==5.10.0
+pyxlsb==1.0.10
+streamlit==1.14.0
+streamlit_autorefresh==0.0.1
+openpyxl>3.0.7
