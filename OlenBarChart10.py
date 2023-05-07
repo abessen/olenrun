@@ -85,7 +85,7 @@ def load_data(wb_file_path, rolling_window):
 
 
 
-@st.cache_resource
+#@st.cache_resource
 def get_state():
     return {'y_max': None, 'value_limit': 3000}
 
