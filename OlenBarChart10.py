@@ -93,8 +93,8 @@ state = get_state()
 #state.setdefault('value_limit', 2400)
 
 # Declare the sidebar widgets
-rolling_window = st.sidebar.number_input("Enter Rolling Average Minutes", min_value=0, max_value=100, value=30, step=1, key='rolling_window')
-value_limit = st.sidebar.number_input("Value Limit", min_value=0, max_value=4000, value=int(state['value_limit'] or 400), step=100, key='value_limit')
+rolling_window = st.sidebar.number_input("Rolling Average Minutes", min_value=0, max_value=100, value=30, step=1, key='rolling_window')
+value_limit = st.sidebar.number_input("Max y-axis Value", min_value=0, max_value=4000, value=int(state['value_limit'] or 400), step=100, key='value_limit')
 #y_max_value = state.get('y_max', 3000)
 #y_max_value = 3000 if y_max_value is None else int(y_max_value)
 #state['y_max'] = st.sidebar.number_input("Y-axis Max Value", min_value=0, max_value=4000, value=y_max_value, step=100, key='y_max')
