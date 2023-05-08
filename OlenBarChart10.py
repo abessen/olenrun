@@ -77,6 +77,7 @@ def load_data(wb_file_path, rolling_window):
             print("Permission denied while reading the file. Retrying in 10 seconds...")
             time.sleep(10)
 
+print(wb_file_path)
 
 
 
