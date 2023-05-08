@@ -49,9 +49,6 @@ def calculate_rolling_average(df, window):
     return df_rolling
 
 
-
-
-
 def load_data(wb_file_path, rolling_window):
     """Load data from an Excel file and return a DataFrame."""
     while True:
@@ -65,6 +62,10 @@ def load_data(wb_file_path, rolling_window):
             nrows=1441,
     )
 
+            # save the dataframe to an excel file
+            #df.to_excel('c:\olenrun\output.xlsx', index=False)
+
+
             df.columns = [col.replace('.2', '') for col in df.columns]
             df = df[['DateTime'] + y_select]
             df = df.melt(id_vars=['DateTime'], var_name='Scale', value_name='Value')
@@ -77,7 +78,8 @@ def load_data(wb_file_path, rolling_window):
             print("Permission denied while reading the file. Retrying in 10 seconds...")
             time.sleep(10)
 
-print(wb_file_path)
+    # save the dataframe to an excel file
+    #df.to_excel('c:\olenrun\output.xlsx', index=False)
 
 
 
