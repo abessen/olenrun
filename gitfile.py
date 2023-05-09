@@ -47,4 +47,4 @@ while True:
         print("No changes detected in the repository.")
 
     # Pause the script for 60 seconds
-    time.sleep(60)
+   # time.sleep(60)
