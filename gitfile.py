@@ -41,10 +41,11 @@ while True:
         repo.git.commit("-m", f"Add new file {new_file_name}")
 
         # Push the changes to the remote repository
+        repo.git.pull()
         repo.git.push()
         print("changes detected, repository updated.")
     else:
         print("No changes detected in the repository.")
 
     # Pause the script for 60 seconds
-   # time.sleep(60)
+    time.sleep(60)
