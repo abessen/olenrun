@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run appdata2.py
+web: sh setup.sh && streamlit run OlenBarChart10.py

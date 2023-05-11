@@ -23,8 +23,11 @@ while True:
     # Set the local file path (within your Git repository)
     local_file_path = "c:\\olenrun\\NowData.xlsx"
 
-    # Copy the file to the local GitHub repository
-    shutil.copy(wb_file_path, local_file_path)
+    try:
+        # Copy the file to the local GitHub repository
+        shutil.copy(wb_file_path, local_file_path)
+    except PermissionError as e:
+        print(f"Error: {e}. Skipping file copy.")
 
     # Set the path to your Git repository
     repo_path = "c:\\olenrun"
@@ -36,6 +39,9 @@ while True:
     if repo.is_dirty():
         # Stage the changes (add the new file to the staging area)
         repo.git.add(local_file_path)
+
+        # Add all changes to the staging area
+        repo.git.add(".")
 
         # Commit the changes
         repo.git.commit("-m", f"Add new file {new_file_name}")
