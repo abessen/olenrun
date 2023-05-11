@@ -6,8 +6,9 @@ from datetime import datetime
 
 while True:
     # specify the file path as a string
-    file_path = r"C:\QVisionData\OneDrive\QuarryVisionDev\QVisionDataFiles\Transfer/Reports\OlenData1\*.xlsx"
-
+   # file_path = r"C:\QVisionData\OneDrive\QuarryVisionDev\QVisionDataFiles\Transfer/Reports\OlenData1\*.xlsx"
+    file_path = r"\\ARB-NUC\QVisionDataFiles\Transfer\Reports\OlenData1\*.xlsx"
+    
     # get the current date as a string in the same format as the file name
     current_date_str = datetime.now().strftime("%Y-%m-%d")
 
