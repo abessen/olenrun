@@ -22,7 +22,9 @@ while True:
     wb_file_path = os.path.join(os.path.dirname(file_path), new_file_name)
 
     # Set the local file path (within your Git repository)
-    local_file_path = "c:\\olenrun\\NowData.xlsx"
+    # local_file_path = "c:\\olenrun\\NowData.xlsx"
+    local_file_path =r"\\ARB-NUC\olenrun\NowData.xlsx"
+
 
     try:
         # Copy the file to the local GitHub repository
