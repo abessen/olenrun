@@ -26,8 +26,12 @@ while True:
     try:
         # Copy the file to the local GitHub repository
         shutil.copy(wb_file_path, local_file_path)
+    except FileNotFoundError as e:
+        print(f"Error: {e}. File not found. Skipping this iteration.")
+        continue
     except PermissionError as e:
         print(f"Error: {e}. Skipping file copy.")
+        continue
 
     # Set the path to your Git repository
     repo_path = "c:\\olenrun"
