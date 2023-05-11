@@ -37,7 +37,7 @@ while True:
         continue
 
     # Set the path to your Git repository
-    repo_path = "c:\\olenrun"
+    repo_path = r"\\ARB-NUC\olenrun"
 
     # Initialize the Git repository
     repo = Repo(repo_path)
