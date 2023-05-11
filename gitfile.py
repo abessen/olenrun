@@ -6,9 +6,8 @@ from datetime import datetime
 
 while True:
     # specify the file path as a string
-   # file_path = r"C:\QVisionData\OneDrive\QuarryVisionDev\QVisionDataFiles\Transfer/Reports\OlenData1\*.xlsx"
-    file_path = r"\\ARB-NUC\QVisionDataFiles\Transfer\Reports\OlenData1\*.xlsx"
-    
+    file_path = r"C:\QVisionData\OneDrive\QuarryVisionDev\QVisionDataFiles\Transfer/Reports\OlenData1\*.xlsx"
+
     # get the current date as a string in the same format as the file name
     current_date_str = datetime.now().strftime("%Y-%m-%d")
 
@@ -22,9 +21,7 @@ while True:
     wb_file_path = os.path.join(os.path.dirname(file_path), new_file_name)
 
     # Set the local file path (within your Git repository)
-    # local_file_path = "c:\\olenrun\\NowData.xlsx"
-    local_file_path =r"\\ARB-NUC\olenrun\NowData.xlsx"
-
+    local_file_path = "c:\\olenrun\\NowData.xlsx"
 
     try:
         # Copy the file to the local GitHub repository
@@ -37,7 +34,7 @@ while True:
         continue
 
     # Set the path to your Git repository
-    repo_path = r"\\ARB-NUC\olenrun"
+    repo_path = "c:\\olenrun"
 
     # Initialize the Git repository
     repo = Repo(repo_path)
