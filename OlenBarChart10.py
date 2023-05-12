@@ -34,7 +34,7 @@ y_select = st.sidebar.multiselect(
 )
 
 #wb_file_path = r'c:\olenrun\NowData.xlsx'
-wb_file_path = 'NowData.xlsx'
+wb_file_path = 'data/NowData.xlsx'
 
 # Print the file path
 print(wb_file_path)
@@ -232,7 +232,6 @@ def update_data_and_chart(value_slider, y_axis_limit):
 
 
 
-
 # Continuously update the chart
 value_slider = st.sidebar.number_input("Capped Value (limits data anomoly effects)", min_value=0, max_value=4000, value=2400, step=100, key='value_slider')
 print(value_slider)
@@ -248,3 +247,13 @@ while True:
         print("User disconnected, stopping script...")
         break
 
+
+# ---- HIDE STREAMLIT STYLE ----
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
