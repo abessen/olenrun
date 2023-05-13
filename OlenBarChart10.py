@@ -30,7 +30,7 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="qvision.jpg", width=200, height=120)
+my_logo = add_logo(logo_path="qvision.jpg", width=160, height=90)
 
 if my_logo is not None:
     # Use st.image to display the logo in the main display
