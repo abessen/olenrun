@@ -38,14 +38,11 @@ st.image (my_logo)
 # Apply the custom CSS
 if my_logo:
     custom_css = f'''
-    <style>
+    <style>     
     /* Hide the default Streamlit footer */
-    .footer {{
-        visibility: hidden;
-    }}
+    .footer {{visibility: hidden;}}
     /* Add your logo to the page */
-    header::after {{
-        content: url("{my_logo}");
+    header::after {{content: url("{my_logo}");
         display: block;
         position: absolute;
         right: 0px;  # move it closer to the right edge
