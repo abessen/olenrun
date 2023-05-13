@@ -8,7 +8,8 @@ import colorsys
 import re
 import openpyxl 
 from PIL import Image
-
+import base64
+import io
 
 # Set Page Configuration
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
@@ -28,13 +29,41 @@ def add_logo(logo_path, width, height):
         return None
     logo = Image.open(logo_path)
     modified_logo = logo.resize((width, height))
-    return modified_logo
 
-my_logo = add_logo(logo_path="qvision.jpg", width=160, height=90)
+    my_logo = add_logo(logo_path="qvision.jpg", width=160, height=90)
 
-if my_logo is not None:
-    # Use st.image to display the logo in the main display
-    st.image(my_logo)
+    # Convert the image to a data URL
+    byte_arr = io.BytesIO()
+    modified_logo.save(byte_arr, format='JPEG')
+    encoded_image = base64.b64encode(byte_arr.getvalue()).decode()
+
+    return f'data:image/jpeg;base64,{encoded_image}'
+
+    if my_logo is not None:
+        custom_style = f"""
+        <style>
+        .reportview-container::before {{
+            content: "";
+            background-image: url({my_logo});
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 60px;
+            height: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }}
+        footer {{
+            visibility: hidden;
+        }}
+        </style>
+        """
+        st.markdown(custom_style, unsafe_allow_html=True)
+
+
+
+
+
 
 # List all files in the current directory
 ##files = os.listdir()
