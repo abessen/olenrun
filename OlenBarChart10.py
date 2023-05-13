@@ -21,32 +21,20 @@ dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
 
 
-# You can always call this function where ever you want
-def add_logo (logo_path, width, height):
- """Read and return a resized logo"""
- logo = Image.open (logo_path)
- modified_logo = logo.resize ( (width, height))
- return modified_logo
+def add_logo(logo_path, width, height):
+    """Read and return a resized logo"""
+    if not os.path.isfile(logo_path):
+        st.error(f"File {logo_path} not found")
+        return None
+    logo = Image.open(logo_path)
+    modified_logo = logo.resize((width, height))
+    return modified_logo
 
-my_logo = add_logo (logo_path="Belt.jpg", width=60, height=40)
+my_logo = add_logo(logo_path="belt.jpg", width=60, height=40)
 
-# Use st.image to display the logo in the main display
-st.image (my_logo)
-
-# Use CSS to position the logo in the lower right corner and hide the streamlit logo
-custom_style = """
-<style>
-img {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-}
-footer {
-  visibility: hidden;
-}
-</style>
-"""
-st.markdown (custom_style, unsafe_allow_html=True)
+if my_logo is not None:
+    # Use st.image to display the logo in the main display
+    st.image(my_logo)
 
 
 
