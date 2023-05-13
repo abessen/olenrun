@@ -23,11 +23,11 @@ dataframe_placeholder2 = st.empty()
 # You can always call this function where ever you want
 def add_logo (logo_path, width, height):
   """Read and return a resized logo"""
-  logo = Image.open ("C:\AGGMenu\cool_md_blk_frame_0005.gif")
+  logo = Image.open ("cool.gif")
   modified_logo = logo.resize ( (width, height))
   return modified_logo
 
-my_logo = add_logo (logo_path="C:\AGGMenu\cool_md_blk_frame_0005.gif", width=60, height=40)
+my_logo = add_logo (logo_path="cool.gif", width=60, height=40)
 st.sidebar.image (my_logo)
 
 hide_streamlit_style = """
