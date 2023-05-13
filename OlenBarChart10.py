@@ -11,7 +11,7 @@ import openpyxl
 def main():
     # Apply custom CSS to hide the "Manage App" link
     st.markdown('<style>' + open('custom.css').read() + '</style>', unsafe_allow_html=True)
-    
+
 # Set Page Configuration
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
@@ -21,6 +21,7 @@ last_updated_placeholder = st.empty()
 chart_placeholder = st.empty()
 dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
+
 
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
