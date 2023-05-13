@@ -41,7 +41,7 @@ def add_logo(logo_path, width, height):
 my_logo = add_logo(logo_path="qvision.jpg", width=160, height=90)
 
 # Apply the custom CSS
-if my_logo is not None:
+if my_logo:
     custom_style = f"""
     <style>
     .reportview-container::before {{
@@ -61,7 +61,9 @@ if my_logo is not None:
     </style>
     """
     st.markdown(custom_style, unsafe_allow_html=True)
-    
+
+st.image(my_logo, caption='Logo', format='JPEG')
+
 
 
 
