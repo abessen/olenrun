@@ -62,7 +62,7 @@ if my_logo:
     """
     st.markdown(custom_style, unsafe_allow_html=True)
 
-st.image(my_logo, caption='Logo', format='JPEG')
+    st.image(my_logo, caption='Logo', format='JPEG')
 
 
 
