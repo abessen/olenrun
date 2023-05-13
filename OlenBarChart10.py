@@ -186,7 +186,7 @@ def create_chart(df, y_axis_limit, tick_interval):
             df[df['Scale'] == scale], height=400).mark_bar().encode(
             x=alt.X('DateTime', axis=alt.Axis(labelOverlap="parity", labelAngle=-90, grid=False, labelColor='rgb(220, 255, 160)', titleColor='rgb(220, 255, 160)', labelFontSize=13)),
             y=alt.Y('CappedValue', title="Tons", scale=alt.Scale(domain=(0, y_axis_limit)), axis=alt.Axis(labelColor='rgb(220, 255, 160)', titleColor='rgb(220, 255, 160)', labelFontSize=15, tickCount=tick_interval)),
-            color=alt.Color('Scale', scale=color_scale, legend=None)
+            color=alt.Color('Scale', scale=color_scale, legend=alt.Legend(orient="right"))
         )
 
 
@@ -210,7 +210,7 @@ def create_chart(df, y_axis_limit, tick_interval):
         charts.append(combined_chart)
 
     # Layer all the charts for different scales
-    final_chart = alt.layer(*charts, height=400).resolve_scale(color='independent')
+    final_chart = alt.layer(*charts, height=400).resolve_scale(color='shared')
 
     # Display the chart
     chart_placeholder.altair_chart(final_chart, use_container_width=True)
