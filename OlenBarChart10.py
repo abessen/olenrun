@@ -8,16 +8,6 @@ import colorsys
 import re
 import openpyxl 
 
-# Load the custom CSS file
-def load_css(file_name: str):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-# Call the function to load the CSS file
-load_css("static/style.css")
-
-
-
 
 # Set Page Configuration
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
@@ -28,6 +18,17 @@ last_updated_placeholder = st.empty()
 chart_placeholder = st.empty()
 dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
+
+
+def load_css(file_name: str):
+    try:
+        with open(file_name) as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error(f"File {file_name} not found")
+
+load_css("static/style.css")
+
 
 
 # ---- HIDE STREAMLIT STYLE ----
