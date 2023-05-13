@@ -62,7 +62,8 @@ if my_logo:
     """
     st.markdown(custom_style, unsafe_allow_html=True)
 
-    st.image(my_logo, caption='Logo', format='JPEG')
+    st.markdown(f'<a href="{my_logo}" target="_blank">Click to view logo</a>', unsafe_allow_html=True)
+
 
 
 
