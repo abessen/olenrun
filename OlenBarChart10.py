@@ -39,26 +39,27 @@ def add_logo(logo_path, width, height):
 
     return f'data:image/jpeg;base64,{encoded_image}'
 
-    if my_logo is not None:
-        custom_style = f"""
-        <style>
-        .reportview-container::before {{
-            content: "";
-            background-image: url({my_logo});
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            width: 60px;
-            height: 40px;
-            background-size: contain;
-            background-repeat: no-repeat;
-        }}
-        footer {{
-            visibility: hidden;
-        }}
-        </style>
-        """
-        st.markdown(custom_style, unsafe_allow_html=True)
+# Apply the custom CSS
+if my_logo is not None:
+    custom_style = f"""
+    <style>
+    .reportview-container::before {{
+        content: "";
+        background-image: url({my_logo});
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 60px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }}
+    footer {{
+        visibility: hidden;
+    }}
+    </style>
+    """
+    st.markdown(custom_style, unsafe_allow_html=True)
 
 
 
