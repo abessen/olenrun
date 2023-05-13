@@ -21,15 +21,7 @@ chart_placeholder = st.empty()
 dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
 
-# ---- HIDE STREAMLIT STYLE ----
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)  
+
 
 def load_image(logo_path, width, height):
     """Read, resize, and return logo as a data URL"""
@@ -72,7 +64,15 @@ if my_logo:
     '''
     st.markdown(custom_css, unsafe_allow_html=True)
 
-
+# ---- HIDE STREAMLIT STYLE ----
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)  
 
 
 
