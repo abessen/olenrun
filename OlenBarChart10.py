@@ -7,6 +7,7 @@ import streamlit as st
 import colorsys
 import re
 import openpyxl 
+from PIL import Image
 
 
 # Set Page Configuration
@@ -19,24 +20,23 @@ chart_placeholder = st.empty()
 dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
 
-# ---- HIDE Manage App ----
-def load_css(file_name: str):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# You can always call this function where ever you want
+def add_logo (logo_path, width, height):
+  """Read and return a resized logo"""
+  logo = Image.open ("C:\AGGMenu\cool_md_blk_frame_0005.gif")
+  modified_logo = logo.resize ( (width, height))
+  return modified_logo
 
-# Call the function to load the CSS file
-load_css("static/style.css")
+my_logo = add_logo (logo_path=""C:\AGGMenu\cool_md_blk_frame_0005.gif"", width=60, height=40)
+st.sidebar.image (my_logo)
 
-
-# ---- HIDE STREAMLIT STYLE ----
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+"""
+st.markdown (hide_streamlit_style, unsafe_allow_html=True)
 
 
 
