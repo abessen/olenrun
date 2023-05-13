@@ -22,7 +22,7 @@ dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
 
 
-def add_logo(logo_path, width, height):
+def load_image(logo_path, width, height):
     """Read, resize, and return logo as a data URL"""
     if not os.path.isfile(logo_path):
         st.error(f"File {logo_path} not found")
@@ -38,29 +38,29 @@ def add_logo(logo_path, width, height):
     return f'data:image/jpeg;base64,{encoded_image}'
 
 # Call the function to add the logo
-my_logo = add_logo(logo_path="qvision.jpg", width=160, height=90)
+my_logo = load_image(logo_path="qvision.jpg", width=160, height=90)
 
 # Apply the custom CSS
 if my_logo:
-    custom_style = f"""
+    custom_css = f"""
     <style>
-    .reportview-container::before {{
-        content: "";
-        background-image: url("{my_logo}");
+    /* Hide the default Streamlit footer */
+    .element-container:last-child .element {
+        display: none !important;
+    }
+    /* Add your logo to the page */
+    .element-container:last-child::after {{
+        content: url("{my_logo}");
+        display: block;
         position: fixed;
-        right: 0;
-        bottom: 0;
+        right: 30px;
+        bottom: 30px;
         width: 160px;
         height: 90px;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }}
-    footer {{
-        visibility: hidden;
     }}
     </style>
     """
-    st.markdown(custom_style, unsafe_allow_html=True)
+    st.markdown(custom_css, unsafe_allow_html=True)
 
 
 
