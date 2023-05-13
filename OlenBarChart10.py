@@ -233,7 +233,7 @@ def update_data_and_chart(value_slider, y_axis_limit):
 
 
 # Continuously update the chart
-value_slider = st.sidebar.number_input("Capped Value (limits data anomoly effects)", min_value=0, max_value=4000, value=2400, step=100, key='value_slider')
+value_slider = st.sidebar.number_input("Capped Value (limits data anomoly effects)", min_value=0, max_value=4000, value='value_limit', step=100, key='value_slider')
 print(value_slider)
 
 while True:
