@@ -30,9 +30,7 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="C:\\olenrun\\belt.jpg", width=60, height=40)
-
-my_logo = add_logo(logo_path="belt.jpg", width=60, height=40)
+my_logo = add_logo(logo_path="Belt.jpg", width=60, height=40)
 
 if my_logo is not None:
     # Use st.image to display the logo in the main display
