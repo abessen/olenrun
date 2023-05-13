@@ -30,11 +30,13 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="belt.jpg", width=60, height=40)
+my_logo = add_logo(logo_path="C:\\olenrun\\belt.jpg", width=60, height=40)
 
 if my_logo is not None:
     # Use st.image to display the logo in the main display
     st.image(my_logo)
+
+
 
 
 
@@ -55,7 +57,7 @@ y_select = st.sidebar.multiselect(
 wb_file_path = 'NowData.xlsx'
 
 # Print the file path
-print(wb_file_path)
+#print(wb_file_path)
 
 def calculate_rolling_average(df, window):
     """Calculate the rolling average for each scale."""
