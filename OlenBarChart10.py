@@ -46,7 +46,7 @@ if my_logo:
     <style>
     .reportview-container::before {{
         content: "";
-        background-image: url({my_logo});
+        background-image: url("{my_logo}");
         position: fixed;
         right: 0;
         bottom: 0;
