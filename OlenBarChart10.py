@@ -22,7 +22,7 @@ dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
 
 
-def load_image(logo_path, width, height):
+
 def load_image(logo_path, width, height):
     """Read, resize, and return logo as a data URL"""
     if not os.path.isfile(logo_path):
