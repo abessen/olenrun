@@ -42,12 +42,12 @@ my_logo = load_image(logo_path="qvision.jpg", width=160, height=90)
 
 # Apply the custom CSS
 if my_logo:
-    custom_css = f"""
+    custom_css = f'''
     <style>
     /* Hide the default Streamlit footer */
-    .element-container:last-child .element {
+    .element-container:last-child .element {{
         display: none !important;
-    }
+    }}
     /* Add your logo to the page */
     .element-container:last-child::after {{
         content: url("{my_logo}");
@@ -59,7 +59,7 @@ if my_logo:
         height: 90px;
     }}
     </style>
-    """
+    '''
     st.markdown(custom_css, unsafe_allow_html=True)
 
 
