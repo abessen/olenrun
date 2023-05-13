@@ -6,15 +6,17 @@ import altair as alt
 import streamlit as st
 import colorsys
 import re
-import openpyxl
+import openpyxl 
 
 # Load the custom CSS file
-def load_css(static/style.css: str):
-with open(static/style.css) as f:
+def load_css(file_name: str):
+    with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Call the function to load the CSS file
 load_css("static/style.css")
+
+
 
 
 # Set Page Configuration
