@@ -50,8 +50,8 @@ if my_logo:
         position: fixed;
         right: 0;
         bottom: 0;
-        width: 60px;
-        height: 40px;
+        width: 160px;
+        height: 90px;
         background-size: contain;
         background-repeat: no-repeat;
     }}
@@ -61,8 +61,6 @@ if my_logo:
     </style>
     """
     st.markdown(custom_style, unsafe_allow_html=True)
-
-    st.markdown(f'<a href="{my_logo}" target="_blank">Click to view logo</a>', unsafe_allow_html=True)
 
 
 
