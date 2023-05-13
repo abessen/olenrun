@@ -20,23 +20,33 @@ chart_placeholder = st.empty()
 dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
 
+
 # You can always call this function where ever you want
 def add_logo (logo_path, width, height):
-  """Read and return a resized logo"""
-  logo = Image.open ("cool.gif")
-  modified_logo = logo.resize ( (width, height))
-  return modified_logo
+ """Read and return a resized logo"""
+ logo = Image.open (logo_path)
+ modified_logo = logo.resize ( (width, height))
+ return modified_logo
 
 my_logo = add_logo (logo_path="cool.gif", width=60, height=40)
-st.sidebar.image (my_logo)
 
-hide_streamlit_style = """
+# Use st.image to display the logo in the main display
+st.image (my_logo)
+
+# Use CSS to position the logo in the lower right corner and hide the streamlit logo
+custom_style = """
 <style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
+img {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+footer {
+  visibility: hidden;
+}
 </style>
 """
-st.markdown (hide_streamlit_style, unsafe_allow_html=True)
+st.markdown (custom_style, unsafe_allow_html=True)
 
 
 
