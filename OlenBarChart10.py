@@ -19,7 +19,7 @@ chart_placeholder = st.empty()
 dataframe_placeholder1 = st.empty()
 dataframe_placeholder2 = st.empty()
 
-
+# ---- HIDE Manage App ----
 def load_css(file_name: str):
     try:
         with open(file_name) as f:
