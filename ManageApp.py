@@ -67,3 +67,36 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)  
+
+
+# You can always call this function where ever you want
+def add_logo (logo_path, width, height):
+ """Read and return a resized logo"""
+ logo = Image.open (logo_path)
+ modified_logo = logo.resize ( (width, height))
+ return modified_logo
+
+my_logo = add_logo (logo_path="qvision.jpg", width=160, height=90)
+
+# Use st.image to display the logo in the main display
+st.image (my_logo)
+
+# Apply the custom CSS
+if my_logo:
+    custom_css = f'''
+    <style>     
+    /* Hide the default Streamlit footer */
+    .footer {{visibility: hidden;}}
+    /* Add your logo to the page */
+    header::after {{content: url("{my_logo}");
+        display: block;
+        position: absolute;
+        right: 0px;  # move it closer to the right edge
+        bottom: 0px;  # move it closer to the bottom edge
+        width: 160px;
+        height: 90px;
+        z-index: 100;
+    }}
+    </style>
+    '''
+    st.markdown(custom_css, unsafe_allow_html=True)
