@@ -1,9 +1,9 @@
-/* Hide Streamlit's Manage App button */
-button[data-testid="stAppManagerButton"] {
-    display: none !important;
-  }
-  
 /* Hide Streamlit's bottom right logo */
 div[data-testid="stDecoration"] {
+  display: none !important;
+}
+
+/* Hide Streamlit's Manage App button */
+button[data-testid="stAppManagerButton"] {
   display: none !important;
 }
