@@ -38,7 +38,9 @@ if my_logo is not None:
     # Use st.image to display the logo in the main display
     st.image(my_logo)
 
-
+# List all files in the current directory
+files = os.listdir()
+st.write(files)
 
 
 
