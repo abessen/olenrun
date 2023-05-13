@@ -46,16 +46,16 @@ if my_logo:
     custom_css = f'''
     <style>
     /* Hide the default Streamlit footer */
-    .element-container:last-child .element {{
-        display: none !important;
+    .footer {{
+        visibility: hidden;
     }}
     /* Add your logo to the page */
-    .element-container:last-child::after {{
+    header::after {{
         content: url("{my_logo}");
         display: block;
         position: absolute;
         right: 30px;
-        bottom: 30px;
+        bottom: -200px;  # adjust this value as needed
         width: 160px;
         height: 90px;
         z-index: 100;
