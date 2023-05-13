@@ -101,8 +101,8 @@ def get_state():
 state = get_state()
 #state.setdefault('value_limit', 2400)
 
-# Apply custom CSS to hide the "Manage App" link
-st.markdown('<style>' + open('custom.css').read() + '</style>', unsafe_allow_html=True)
+
+
 
 
 # Declare the sidebar widgets
