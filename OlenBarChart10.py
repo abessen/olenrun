@@ -101,6 +101,10 @@ def get_state():
 state = get_state()
 #state.setdefault('value_limit', 2400)
 
+# Apply custom CSS to hide the "Manage App" link
+st.markdown('<style>' + open('custom.css').read() + '</style>', unsafe_allow_html=True)
+
+
 # Declare the sidebar widgets
 rolling_window = st.sidebar.number_input("Rolling Average Minutes", min_value=0, max_value=100, value=30, step=1, key='rolling_window')
 value_limit = st.sidebar.number_input("Max y-axis Value", min_value=0, max_value=4000, value=int(state['value_limit'] or 1200), step=100, key='value_limit')
