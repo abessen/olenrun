@@ -8,7 +8,10 @@ import colorsys
 import re
 import openpyxl
 
-
+def main():
+    # Apply custom CSS to hide the "Manage App" link
+    st.markdown('<style>' + open('custom.css').read() + '</style>', unsafe_allow_html=True)
+    
 # Set Page Configuration
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
@@ -260,9 +263,7 @@ while True:
         print("User disconnected, stopping script...")
         break
 
-def main():
-    # Apply custom CSS to hide the "Manage App" link
-    st.markdown('<style>' + open('custom.css').read() + '</style>', unsafe_allow_html=True)
+
 
 
 if __name__ == '__main__':
