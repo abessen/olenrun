@@ -23,6 +23,7 @@ dataframe_placeholder2 = st.empty()
 
 
 def load_image(logo_path, width, height):
+def load_image(logo_path, width, height):
     """Read, resize, and return logo as a data URL"""
     if not os.path.isfile(logo_path):
         st.error(f"File {logo_path} not found")
@@ -52,11 +53,12 @@ if my_logo:
     .element-container:last-child::after {{
         content: url("{my_logo}");
         display: block;
-        position: fixed;
+        position: absolute;
         right: 30px;
         bottom: 30px;
         width: 160px;
         height: 90px;
+        z-index: 100;
     }}
     </style>
     '''
