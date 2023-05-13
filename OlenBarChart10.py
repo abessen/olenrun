@@ -23,14 +23,12 @@ dataframe_placeholder2 = st.empty()
 
 
 def add_logo(logo_path, width, height):
-    """Read and return a resized logo"""
+    """Read, resize, and return logo as a data URL"""
     if not os.path.isfile(logo_path):
         st.error(f"File {logo_path} not found")
         return None
     logo = Image.open(logo_path)
     modified_logo = logo.resize((width, height))
-
-    my_logo = add_logo(logo_path="qvision.jpg", width=160, height=90)
 
     # Convert the image to a data URL
     byte_arr = io.BytesIO()
@@ -38,6 +36,9 @@ def add_logo(logo_path, width, height):
     encoded_image = base64.b64encode(byte_arr.getvalue()).decode()
 
     return f'data:image/jpeg;base64,{encoded_image}'
+
+# Call the function to add the logo
+my_logo = add_logo(logo_path="qvision.jpg", width=160, height=90)
 
 # Apply the custom CSS
 if my_logo is not None:
@@ -60,6 +61,7 @@ if my_logo is not None:
     </style>
     """
     st.markdown(custom_style, unsafe_allow_html=True)
+    
 
 
 
