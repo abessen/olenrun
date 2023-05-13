@@ -125,6 +125,7 @@ state = get_state()
 
 
 # Declare the sidebar widgets
+opacity1 = st.sidebar.number_input('Enter a value for the opacity', min_value=0.0, max_value=1.0, value=1.0)
 rolling_window = st.sidebar.number_input("Rolling Average Minutes", min_value=0, max_value=100, value=30, step=1, key='rolling_window')
 value_limit = st.sidebar.number_input("Max y-axis Value", min_value=0, max_value=4000, value=int(state['value_limit'] or 1200), step=100, key='value_limit')
 #y_max_value = state.get('y_max', 3000)
@@ -182,11 +183,11 @@ def create_chart(df, y_axis_limit, tick_interval):
                'rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)', 'rgb(0, 0, 255)']
     )
 
-    opacity = st.sidebar.number_input('Enter a value for the opacity', min_value=0.0, max_value=1.0, value=1.0)
+    
     
     for scale in y_select:
         bar_chart = alt.Chart(
-            df[df['Scale'] == scale], height=400).mark_bar(opacity=opacity).encode(
+            df[df['Scale'] == scale], height=400).mark_bar(opacity=opacity1).encode(
             x=alt.X('DateTime', axis=alt.Axis(labelOverlap="parity", labelAngle=-90, grid=False, labelColor='rgb(220, 255, 160)', titleColor='rgb(220, 255, 160)', labelFontSize=13)),
             y=alt.Y('CappedValue', title="Tons", scale=alt.Scale(domain=(0, y_axis_limit)), axis=alt.Axis(labelColor='rgb(220, 255, 160)', titleColor='rgb(220, 255, 160)', labelFontSize=15, tickCount=tick_interval)),
             color=alt.Color('Scale', scale=color_scale, legend=alt.Legend(orient="right"))
