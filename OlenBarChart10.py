@@ -62,8 +62,8 @@ if my_logo:
         content: url("{my_logo}");
         display: block;
         position: absolute;
-        right: 30px;
-        bottom: -200px;  # adjust this value as needed
+        right: 10px;  # move it closer to the right edge
+        bottom: -500px;  # move it closer to the bottom edge
         width: 160px;
         height: 90px;
         z-index: 100;
