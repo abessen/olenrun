@@ -54,16 +54,16 @@ if my_logo:
     custom_css = f'''
     <style>
     /* Hide the default Streamlit footer */
-    .footer {{
+    .reportview-container .main footer {{
         visibility: hidden;
     }}
     /* Add your logo to the page */
-    header::after {{
+    .reportview-container .main footer::after {{
         content: url("{my_logo}");
         display: block;
         position: absolute;
-        right: 0px;  # move it closer to the right edge
-        bottom: 0px;  # move it closer to the bottom edge
+        right: 0px;  # move it to the very right edge
+        bottom: 0px;  # move it to the very bottom edge
         width: 160px;
         height: 90px;
         z-index: 100;
