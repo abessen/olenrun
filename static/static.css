@@ -1,0 +1,5 @@
+/* Hide Streamlit's Manage App button */
+button[data-testid="stAppManagerButton"] {
+    display: none !important;
+  }
+  
