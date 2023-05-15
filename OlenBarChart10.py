@@ -139,7 +139,7 @@ def update_data(value_slider, y_axis_limit):
     # Create a new column 'CappedValue' in the DataFrame, containing the capped values based on the selected y-axis max value
     #filtered_df.loc[:, 'CappedValue'] = filtered_df['Value'].apply(lambda x: x if x <= value_limit else value_limit)
     filtered_df.loc[:, 'CappedValue'] = filtered_df['Value'].apply(lambda x: x if x <= value_slider else value_slider)
-    print(value_slider)
+  #  print(value_slider)
 
     # Set y_domain to [0, value_limit]
     y_domain = [0, value_limit]
@@ -168,7 +168,7 @@ def create_chart(df, y_axis_limit, tick_interval):
     charts = []
     color_scale = alt.Scale(
         domain=["LFC8", "LC2", "LC6", "LC7", "LC1B", "LC31", "LC1", "LC14", "LC17", "LC20", "LC27", "LC11", "LFC9"],
-        range=['rgb(255, 0, 0)', 'rgb(200, 100, 0)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)', 'rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)',
+        range=['rgb(0, 128, 0)', 'rgb(200, 100, 0)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)', 'rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)',
                'rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)', 'rgb(255, 0, 0)']
     )
 
@@ -209,37 +209,24 @@ def create_chart(df, y_axis_limit, tick_interval):
     chart_placeholder.altair_chart(final_chart, use_container_width=True)
     return final_chart
 
-
-
+  
 
 
 def update_data_and_chart(value_slider, y_axis_limit):
     # Get the updated value_limit from the sidebar
     global value_limit
     value_limit = value_slider
-    print(value_limit)
+   # print(value_limit)
 
     # Update the data based on the new value_limit
     #filtered_df, y_domain, tick_interval = update_data(value_limit)
     filtered_df, y_domain, tick_interval = update_data(value_slider, y_axis_limit)
 
-    # Create the chart with the updated data
-    #final_chart = create_chart(filtered_df, y_domain, tick_interval)
+    # Create the chart with the updated data    
     final_chart = create_chart(filtered_df, y_axis_limit, tick_interval)
 
-    # Display the chart
-   # chart_placeholder.altair_chart(final_chart, use_container_width=True)
-
-    # Create an empty placeholder
-    processing_message = st.empty()
-
-    processing_message.markdown(
-        "<p style='color: yellow; font-family: Arial; font-size: 18px; text-align: center;'>Processing Data... please wait</p>",
-        unsafe_allow_html=True,
-    )
-
-    # Remove the message after the chart update is complete
-    processing_message.empty()
+    # Update the chart placeholder with the final chart
+    chart_placeholder.altair_chart(final_chart, use_container_width=True)
     
     thistime = datetime.now(timezone(timedelta(hours=-4), 'EDT'))
     timenow = thistime.strftime("%m-%d-%y %H:%M:%S")
@@ -253,24 +240,44 @@ def update_data_and_chart(value_slider, y_axis_limit):
                 </div>
             """, unsafe_allow_html=True)
 
-
-
-
-
 # Continuously update the chart
 value_slider = st.sidebar.number_input("Capped Value (limits data anomoly effects)", min_value=0, max_value=4000, value=1200, step=100, key='value_slider')
-print(value_slider)
+#print(value_slider)
+
+# Create a placeholder for the processing message
+processing_message = st.empty()
+
 
 while True:
     try:
         # Reload the data here
         print("Reloading data...")
+
+              
+
+        # Display the processing message using JavaScript
+        processing_message.markdown("""
+            <p style='color: yellow; font-family: Arial; font-size: 18px; text-align: center;'>Processing Data... please wait</p>
+            <script>
+                setTimeout(function() {
+                    document.getElementById('processing-message').style.display = 'none';
+                }, 5000);
+            </script>
+        """, unsafe_allow_html=True)
+
+        # Remove the processing message
+        processing_message.empty()
+
+
         update_data_and_chart(value_slider, value_limit)   # Add the value_limit parameter here
-        time.sleep(30)
+
+        # Sleep for 5 seconds
+        #time.sleep(5)
+
+        
+        # Sleep for 25 seconds before the next iteration
+        time.sleep(25)
     except KeyboardInterrupt:
         # Stop the script if the user closes the browser or disconnects
         print("User disconnected, stopping script...")
         break
-
-
-
