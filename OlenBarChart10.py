@@ -142,9 +142,10 @@ def update_data(value_slider, y_axis_limit):
         print(f"No file exists at {wb_file_path}")
         return None, None, None  # Return None for all values if the file does not exist
     
+    # Attempt to load the data
     try:
         df = load_data(wb_file_path, rolling_window)
-    except pd.errors.FileNotFoundError:
+    except FileNotFoundError:
         print(f"Could not open {wb_file_path} because it is in use by another application")
         return None, None, None  # Return None for all values if the file cannot be opened
 
