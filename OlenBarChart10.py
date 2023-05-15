@@ -40,7 +40,7 @@ y_select = st.sidebar.multiselect(
 
 
 #wb_file_path = r'c:/olenrun/NowData.xlsx'
-os.chdir(r'C:\olenrun')
+#os.chdir(r'C:\olenrun')
 wb_file_path = 'NowData.xlsx'
 
 # Print the file path
