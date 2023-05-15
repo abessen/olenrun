@@ -219,12 +219,6 @@ def create_chart(df, y_axis_limit, tick_interval):
             stroke=f"rgb({lighter_color[0]}, {lighter_color[1]}, {lighter_color[2]})", strokeWidth=2).encode(x='DateTime', y='RollingAvg').properties(width='container')
         
    
-         # Add your new chart
-        new_chart = alt.Chart(df).mark_bar().encode(
-        x='SomeColumn:O',
-        y='AnotherColumn:Q',
-        color=alt.Color('YetAnotherColumn:N', scale=color_scale)
-        )
 
 
         # Combine the bar chart and rolling average line chart
