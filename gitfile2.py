@@ -5,18 +5,13 @@ from datetime import datetime
 import subprocess
 from git import Repo
 
-# Set the path to your Git repository
+    # Set the path to your Git repository
 repo_path = r"\\ARB-NUC\olenrun"
-
-# Initialize the Git repository
+    # Initialize the Git repository
 repo = Repo(repo_path)
-
-# Set the author's identity for this repository
+    # Set the author's identity for this repository
 repo.git.config('user.email', 'abessen@quarryvision.com')
 repo.git.config('user.name', 'abessen')
-
-# Continue with your script...
-
 
 while True:
     # specify the file path as a string on your local machine
@@ -84,4 +79,4 @@ while True:
         print("No changes detected in the repository.")
 
     # Pause the script for 60 seconds
-    time.sleep(60)
+    time.sleep(30)
