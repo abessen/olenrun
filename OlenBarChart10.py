@@ -54,14 +54,13 @@ current_time = datetime.now(timezone(timedelta(hours=-4), 'EDT')).strftime("%m-%
 page_title = f"Olen Limestone Scale Results - Last Updated: {current_time}"
 y_select = st.sidebar.multiselect(
     label="Select Scales",
-    options=[
-        "LFC8", "LC2", "LC6", "LC7", "LC1B", "LC31", "LC1", "LC14", "LC17",
-        "LC20", "LC27", "LC11", "LFC9"
-    ],
+    options=["LFC8", "LC2", "LC6", "LC7", "LC1B", "LC31", "LC1", "LC14", "LC17", "LC20", "LC27", "LC11", "LFC9"],
     default=["LFC8"]
 )
 
+
 #wb_file_path = r'c:/olenrun/NowData.xlsx'
+os.chdir(r'C:\olenrun')
 wb_file_path = 'NowData.xlsx'
 
 # Print the file path
