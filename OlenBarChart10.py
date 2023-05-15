@@ -177,6 +177,10 @@ def lighten_color_fixed(color, amount=100):
     b = max(min(b + amount, 255), 0)
     return int(r), int(g), int(b)
 
+if filtered_df is None:
+    print("Error: filtered_df is None.")
+else:
+    final_chart = create_chart(filtered_df, y_axis_limit, tick_interval)
 
 
 def create_chart(df, y_axis_limit, tick_interval):
