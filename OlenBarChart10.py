@@ -261,12 +261,12 @@ while True:
             <script>
                 setTimeout(function() {
                     document.getElementById('processing-message').style.display = 'none';
-                }, 5000);
+                }, 9000);
             </script>
         """, unsafe_allow_html=True)
 
         # Sleep for 5 seconds
-        time.sleep(5)
+        #time.sleep(5)
 
         # Remove the processing message
         processing_message.empty()
