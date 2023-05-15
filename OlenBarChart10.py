@@ -265,6 +265,9 @@ while True:
             </script>
         """, unsafe_allow_html=True)
 
+        # Sleep for 5 seconds
+        time.sleep(5)
+
         # Remove the processing message
         processing_message.empty()
 
