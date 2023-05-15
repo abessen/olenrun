@@ -136,8 +136,11 @@ value_limit = st.sidebar.number_input("Max y-axis Value", min_value=0, max_value
 
 
 
-def update_data(value_slider, y_axis_limit):
-   
+def update_data(value_slider, y_axis_limit):   
+    # Check if the file exists
+    if not os.path.isfile(wb_file_path):
+        print(f"No file exists at {wb_file_path}")
+        return None, None, None  # Return None for all values if the file does not exist
 
     # Load the data
     df = load_data(wb_file_path, rolling_window)
