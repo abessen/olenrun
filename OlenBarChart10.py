@@ -169,7 +169,7 @@ def create_chart(df, y_axis_limit, tick_interval):
     color_scale = alt.Scale(
         domain=["LFC8", "LC2", "LC6", "LC7", "LC1B", "LC31", "LC1", "LC14", "LC17", "LC20", "LC27", "LC11", "LFC9"],
         range=['rgb(0, 200, 0)', 'rgb(200, 100, 0)', 'rgb(100, 150, 255)', 'rgb(255, 255, 180)', 'rgb(180, 120, 255)', 'rgb(100, 100, 1000)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)',
-               'rgb(155, 60, 0)', 'rgb(75, 22, 0)', 'rgb(0, 91, 180)', 'rgb(244, 44, 244)', 'rgb(110, 0, 0)']
+               'rgb(155, 60, 0)', 'rgb(75, 22, 0)', 'rgb(0, 91, 180)', 'rgb(244, 44, 244)', 'rgb(200, 0, 0)']
     )
 
     
