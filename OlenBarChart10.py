@@ -10,7 +10,6 @@ import openpyxl
 from PIL import Image
 import base64
 import io
-import zipfile
 
 # Set Page Configuration
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
@@ -138,33 +137,30 @@ value_limit = st.sidebar.number_input("Max y-axis Value", min_value=0, max_value
 
 
 def update_data(value_slider, y_axis_limit):
-    # Check if the file exists
-    if not os.path.isfile(wb_file_path):
-        print(f"No file exists at {wb_file_path}")
-        return None, None, None  # Return None for all values if the file does not exist
-    
-    # Attempt to load the data
-    try:
-        df = load_data(wb_file_path, rolling_window)
-    except zipfile.BadZipFile:
-        print(f"File at {wb_file_path} is not a valid .xlsx file or it is corrupted.")
-        return None, None, None  # Return None for all values if the file is not valid or corrupted.
+   
+
+    # Load the data
+    df = load_data(wb_file_path, rolling_window)
 
     # Filter the DataFrame based on the selected scales and values less than 3000
+    #filtered_df = df[(df['Scale'].isin(y_select)) & (df['Value'] < value_limit)]   
     filtered_df = df[(df['Scale'].isin(y_select)) & (df['Value'] < value_slider)]
 
+
     # Create a new column 'CappedValue' in the DataFrame, containing the capped values based on the selected y-axis max value
+    #filtered_df.loc[:, 'CappedValue'] = filtered_df['Value'].apply(lambda x: x if x <= value_limit else value_limit)
     filtered_df.loc[:, 'CappedValue'] = filtered_df['Value'].apply(lambda x: x if x <= value_slider else value_slider)
+    print(value_slider)
 
-    # Set y_domain to [0, value_slider]
-    y_domain = [0, value_slider]
+    # Set y_domain to [0, value_limit]
+    y_domain = [0, value_limit]
 
-    max_y = value_slider
+    max_y = value_limit
+   # print(max_y)
     
     tick_interval = max_y // 100 if max_y <= 2000 else max_y // 200
 
     return filtered_df, y_domain, tick_interval
-
 
 
 
@@ -176,7 +172,6 @@ def lighten_color_fixed(color, amount=100):
     g = max(min(g + amount, 255), 0)
     b = max(min(b + amount, 255), 0)
     return int(r), int(g), int(b)
-
 
 
 
@@ -211,6 +206,7 @@ def create_chart(df, y_axis_limit, tick_interval):
             stroke=f"rgb({lighter_color[0]}, {lighter_color[1]}, {lighter_color[2]})", strokeWidth=2).encode(x='DateTime', y='RollingAvg').properties(width='container')
         
    
+
 
 
         # Combine the bar chart and rolling average line chart
