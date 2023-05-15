@@ -150,7 +150,7 @@ def update_data(value_slider, y_axis_limit):
     # Create a new column 'CappedValue' in the DataFrame, containing the capped values based on the selected y-axis max value
     #filtered_df.loc[:, 'CappedValue'] = filtered_df['Value'].apply(lambda x: x if x <= value_limit else value_limit)
     filtered_df.loc[:, 'CappedValue'] = filtered_df['Value'].apply(lambda x: x if x <= value_slider else value_slider)
-    print(value_slider)
+    #print(value_slider)
 
     # Set y_domain to [0, value_limit]
     y_domain = [0, value_limit]
