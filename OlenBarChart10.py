@@ -46,7 +46,6 @@ st.markdown(
 ##files = os.listdir()
 #st.write(files)
 
-
 pd.options.mode.chained_assignment = None  # default='warn'
 current_time = datetime.now(timezone(timedelta(hours=-4), 'EDT')).strftime("%m-%d-%y %H:%M:%S")
 page_title = f"Olen Limestone Scale Results - Last Updated: {current_time}"
@@ -56,11 +55,9 @@ y_select = st.sidebar.multiselect(
     default=["LFC8"]
 )
 
-
 #wb_file_path = r'c:/olenrun/NowData.xlsx'
 #os.chdir(r'C:\olenrun')
 wb_file_path = 'NowData.xlsx'
-
 # Print the file path
 #print(wb_file_path)
 
@@ -73,7 +70,6 @@ def calculate_rolling_average(df, window):
             df_rolling.loc[scale_rows, "Value"].rolling(window=window).mean()
         )
     return df_rolling
-
 
 def load_data(wb_file_path, rolling_window):
     """Load data from an Excel file and return a DataFrame."""
@@ -89,9 +85,6 @@ def load_data(wb_file_path, rolling_window):
     )
 
             # save the dataframe to an excel file
-            #df.to_excel('c:\olenrun\output.xlsx', index=False)
-
-
             df.columns = [col.replace('.2', '') for col in df.columns]
             df = df[['DateTime'] + y_select]
             df = df.melt(id_vars=['DateTime'], var_name='Scale', value_name='Value')
@@ -108,8 +101,6 @@ def load_data(wb_file_path, rolling_window):
     #df.to_excel('c:\olenrun\output.xlsx', index=False)
 
 
-
-
 #@st.cache_resource
 def get_state():
     return {'y_max': None, 'value_limit': None}
@@ -117,24 +108,25 @@ def get_state():
 state = get_state()
 #state.setdefault('value_limit', 2400)
 
-
-
-
-
 # Declare the sidebar widgets
 opacity1 = st.sidebar.number_input('Enter a value for the opacity', min_value=0.0, max_value=1.0, value=0.4)
 rolling_window = st.sidebar.number_input("Rolling Average Minutes", min_value=0, max_value=100, value=30, step=1, key='rolling_window')
 value_limit = st.sidebar.number_input("Max y-axis Value", min_value=0, max_value=4000, value=int(state['value_limit'] or 1200), step=100, key='value_limit')
-#y_max_value = state.get('y_max', 3000)
-#y_max_value = 3000 if y_max_value is None else int(y_max_value)
-#state['y_max'] = st.sidebar.number_input("Y-axis Max Value", min_value=0, max_value=4000, value=y_max_value, step=100, key='y_max')
-
-
-
 
 
 def update_data(value_slider, y_axis_limit):
-   
+    # Check if the file exists
+    if not os.path.isfile(wb_file_path):
+        print(f"No file exists at {wb_file_path}")
+        return None, None, None  # Return None for all values if the file does not exist
+
+    # Attempt to load the data
+    try:
+        df = load_data(wb_file_path, rolling_window)
+    except pd.errors.FileNotFoundError:
+        print(f"Could not open {wb_file_path} because it is in use by another application")
+        return None, None, None  # Return None for all values if the file cannot be opened
+
 
     # Load the data
     df = load_data(wb_file_path, rolling_window)
