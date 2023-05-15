@@ -10,6 +10,7 @@ import openpyxl
 from PIL import Image
 import base64
 import io
+import zipfile
 
 # Set Page Configuration
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
@@ -142,12 +143,14 @@ def update_data(value_slider, y_axis_limit):
         print(f"No file exists at {wb_file_path}")
         return None, None, None  # Return None for all values if the file does not exist
     
+
+    
     # Attempt to load the data
     try:
         df = load_data(wb_file_path, rolling_window)
-    except FileNotFoundError:
-        print(f"Could not open {wb_file_path} because it is in use by another application")
-        return None, None, None  # Return None for all values if the file cannot be opened
+    except zipfile.BadZipFile:
+        print(f"File at {wb_file_path} is not a valid .xlsx file or it is corrupted.")
+        return None  # or some other appropriate response
 
     # Load the data
     df = load_data(wb_file_path, rolling_window)
