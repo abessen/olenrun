@@ -12,7 +12,7 @@ st.set_page_config(page_title="Olen Limestone Results Summary Table", layout="wi
 from openpyxl.utils.dataframe import dataframe_to_rows
 
 #wb_file_path = r'c:/olenrun/NowData.xlsx'
-#os.chdir(r'C:\olenrun')
+os.chdir(r'C:\\olenrun')
 #wb_file_path = 'NowData.xlsx'
 
 # Get the current directory of the script
@@ -21,7 +21,7 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 # Change the current directory to olenrun
 #os.chdir(os.path.join(script_dir, 'olenrun'))
 
-os.chdir('/home/appuser/olenrun')
+#os.chdir('/home/appuser/olenrun')
 
 
 wb_file_path = 'NowData.xlsx'
