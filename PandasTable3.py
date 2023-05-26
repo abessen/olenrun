@@ -16,10 +16,13 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 #wb_file_path = 'NowData.xlsx'
 
 # Get the current directory of the script
-script_dir = os.path.dirname(os.path.abspath(__file__))
+#script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Change the current directory to olenrun
-os.chdir(os.path.join(script_dir, 'olenrun'))
+#os.chdir(os.path.join(script_dir, 'olenrun'))
+
+os.chdir('/home/appuser/olenrun')
+
 
 wb_file_path = 'NowData.xlsx'
 
