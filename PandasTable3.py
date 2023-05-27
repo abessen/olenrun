@@ -45,7 +45,7 @@ styled_df = styled_df.set_properties(subset=[styled_df.columns[1]], **{'text-ali
 fig = go.Figure(
     data=[
         go.Table(
-            columnwidth=[1.5] + [1] * (df.shape[1] - 1),  # Set column 1 width to 33, other columns to 1
+            columnwidth=[2.0] + [1] * (df.shape[1] - 1),  # Set column 1 width to 33, other columns to 1
             header=dict(
                 values=list(df.columns), 
                 fill_color='rgb(17,17,17)',
