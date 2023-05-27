@@ -65,7 +65,8 @@ fig = go.Figure(
     ],           
 )
 
-current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Get the current time and format it
+
+current_time = datetime.now(timezone(timedelta(hours=-4))).strftime("%Y-%m-%d %H:%M:%S")  # Adjusted timezone to Eastern Daylight Time (EDT)
 st.markdown(f"<h2 style='font-size: 23px; line-height: 33px; vertical-align: bottom;'>Olen Limestone Current Day Results -- <span style='font-size: 20px; color: yellow;'>{current_time}</span></h2>", unsafe_allow_html=True)
 
 fig.update_layout(
