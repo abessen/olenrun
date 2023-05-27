@@ -74,7 +74,7 @@ st.markdown(f"<h2 style='font-size: 23px; line-height: 33px; vertical-align: bot
 
 fig.update_layout(
     margin =dict(l=5,r=5,b=5, t=5), 
-    height=380, 
+    height=400, 
     width=1050, 
     paper_bgcolor='rgb(0,0,0)'
 )
