@@ -10,7 +10,6 @@ import openpyxl
 from PIL import Image
 import base64
 import io
-from zipfile import BadZipFile
 import plotly.graph_objects as go  # Added this line
 
 st.set_page_config(page_title="Olen Limestone Results Summary Table", layout="wide")
@@ -52,14 +51,16 @@ fig = go.Figure(
                 fill_color='rgb(17,17,17)',
                 align=['left','center'],
                 font=dict(color='rgb(255,255,255)', size=14),
-                height=33  # Set top row height to 40
+                height=33,  # Set top row height to 40
+                line_color='rgb(70,70,70)',  # Add this line
             ),
             cells=dict(
                 values=[df[col] for col in df.columns],
                 align=['left', 'center'],
                 font=dict(color=['rgb(255,28,0)' if cell == 0 else 'rgb(255,255,150)' for row in df.values for cell in row], size=14),
                 fill_color=[['rgb(225,28,0)' if cell == 0 else 'rgb(0,0,0)' for cell in row] for row in df.values],
-                height=26  # Set row height to 6    
+                height=26,  # Set row height to 26    
+                line_color='rgb(70,70,70)',  # Add this line
             ),
         )
     ],           
