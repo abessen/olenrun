@@ -45,21 +45,21 @@ styled_df = styled_df.set_properties(subset=[styled_df.columns[1]], **{'text-ali
 fig = go.Figure(
     data=[
         go.Table(
-            columnwidth=[2.0] + [1] * (df.shape[1] - 1),  # Set column 1 width to 33, other columns to 1
+            columnwidth=[2.4] + [1] * (df.shape[1] - 1),  # Set column 1 width to 33, other columns to 1
             header=dict(
                 values=list(df.columns), 
                 fill_color='rgb(17,17,17)',
                 align=['left','center'],
-                font=dict(color='rgb(255,255,255)', size=14),
-                height=40,  # Increase the height of the header row to align text at the bottom
+                font=dict(color='rgb(255,255,255)', size=12),
+                height=20,  # Increase the height of the header row to align text at the bottom
                 line_color='rgb(70,70,70)',  # Add this line
             ),
             cells=dict(
                 values=[df[col] for col in df.columns],
                 align=['left', 'center'],
-                font=dict(color='rgb(255,255,255)', size=14),  # Set font color to white for all cells
+                font=dict(color='rgb(255,255,255)', size=12),  # Set font color to white for all cells
                 fill_color='rgb(0,0,0)',  # Set fill color to black for all cells
-                height=26,  # Set row height to 26    
+                height=20,  # Set row height to 26    
                 line_color='rgb(70,70,70)',  # Add this line
             ),
         )
@@ -69,12 +69,12 @@ fig = go.Figure(
 
 
 current_time = datetime.now(timezone(timedelta(hours=-4))).strftime("%Y-%m-%d %H:%M:%S")  # Adjusted timezone to Eastern Daylight Time (EDT)
-st.markdown(f"<h2 style='font-size: 23px; line-height: 33px; vertical-align: bottom;'>Olen Limestone Current Day Results -- <span style='font-size: 20px; color: yellow;'>{current_time}</span></h2>", unsafe_allow_html=True)
+st.markdown(f"<h2 style='font-size: 16px; line-height: 12px; vertical-align: bottom;'>Olen Limestone Current Day Results -- <span style='font-size: 16px; color: yellow;'>{current_time}</span></h2>", unsafe_allow_html=True)
 
 fig.update_layout(
     margin =dict(l=5,r=5,b=5, t=5), 
-    height=370, 
-    width=1050, 
+    height=310, 
+    width=800, 
     paper_bgcolor='rgb(0,0,0)'
 )
 st.plotly_chart(fig)
